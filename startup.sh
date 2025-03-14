@@ -56,6 +56,7 @@ podman run -d --name n8n \
   -p 5678:5678 \
   -e N8N_ENCRYPTION_KEY="$ENCRYPTION_KEY" \
   -e N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true \
+  -e OLLAMA_API_BASE_URL="http://ollama:11434/api" \
   -e OLLAMA_HOST="http://ollama:11434" \
   -e DB_TYPE=postgresdb \
   -e DB_POSTGRESDB_HOST=postgres \
