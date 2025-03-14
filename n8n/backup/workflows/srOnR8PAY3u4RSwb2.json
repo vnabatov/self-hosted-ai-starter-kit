@@ -2,24 +2,24 @@
   "nodes": [
     {
       "parameters": {},
-      "id": "ab1f0679-878d-4291-a025-5749e70cccb4",
+      "id": "fe8b0cf1-a85f-47b9-bd41-a0be528cccdd",
       "name": "Chat Trigger",
       "type": "@n8n/n8n-nodes-langchain.chatTrigger",
       "typeVersion": 1,
       "position": [
-        0,
-        540
+        -240,
+        -140
       ],
       "webhookId": "cdb5c076-d458-4b9d-8398-f43bd25059b1"
     },
     {
       "parameters": {},
-      "id": "64cd3369-5c31-4153-a635-f1e6989e0027",
+      "id": "5f587ed6-2171-4ca5-bc57-13b55cde2129",
       "name": "Window Buffer Memory",
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "position": [
-        280,
-        800
+        40,
+        120
       ],
       "typeVersion": 1.1
     },
@@ -30,12 +30,12 @@
           "maxIterations": 10
         }
       },
-      "id": "b0f49bf3-7449-4a02-b3cf-64b326691473",
+      "id": "d76a315f-ae84-42b1-84b6-ae9f676eeba3",
       "name": "AI Agent",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "position": [
-        240,
-        540
+        0,
+        -140
       ],
       "typeVersion": 1.1
     },
@@ -44,48 +44,33 @@
         "model": "llama3.2:latest",
         "options": {}
       },
-      "id": "449992dc-11bd-49ee-a1fc-cf76d4792837",
+      "id": "be1a56cc-9819-40ba-81e8-7ecaaea6c1ae",
       "name": "Ollama Chat Model1",
       "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
       "typeVersion": 1,
       "position": [
-        60,
-        820
+        -180,
+        140
       ],
       "credentials": {
         "ollamaApi": {
-          "id": "V9VDR5Y5sU473g8W",
-          "name": "Ollama account 2"
+          "id": "cHqLfm5lXRHe7PfX",
+          "name": "Ollama account"
         }
       }
-    },
-    {
-      "parameters": {
-        "content": "\n\n\n\n\n\n\n\n\n\n\n\n### 🚨 Change EventTypeID Here!\n* EventTypeID must be a number.\n* Your event type dictates the allowed duration of the booking.\n* If Event Type set to 30mins and the agent attempts to book 60mins, this will fail so make sure the agent knows how long to set the booking for!",
-        "height": 367.53952683528235,
-        "width": 275.38061368902055
-      },
-      "id": "349571aa-1bb5-4fc1-810d-b67ec3e30a42",
-      "name": "Sticky Note1",
-      "type": "n8n-nodes-base.stickyNote",
-      "typeVersion": 1,
-      "position": [
-        640,
-        1520
-      ]
     },
     {
       "parameters": {
         "toolDescription": "Call this tool to get the service availability.",
         "url": "http://cmh-contentexchange-service-sit.aws.wiley.com:8080/version"
       },
-      "id": "cdf8581b-bfed-4643-ad84-25947f38e034",
+      "id": "0b326789-e261-4efe-9e25-937881cd7516",
       "name": "Get Availability",
       "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
       "typeVersion": 1,
       "position": [
-        500,
-        800
+        260,
+        120
       ]
     }
   ],
@@ -138,6 +123,6 @@
   "pinData": {},
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "2d5390fe803694d1b1f2e609c2c537452f5e78d552b0615d503ca74743ebe5cd"
+    "instanceId": "8fa9a679bd9d6120022deb2e02f5a05fd5f78e8e7b141154b32c39043f9b4f26"
   }
 }
