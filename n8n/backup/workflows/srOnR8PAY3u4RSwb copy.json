@@ -1,0 +1,143 @@
+{
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "ab1f0679-878d-4291-a025-5749e70cccb4",
+      "name": "Chat Trigger",
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        540
+      ],
+      "webhookId": "cdb5c076-d458-4b9d-8398-f43bd25059b1"
+    },
+    {
+      "parameters": {},
+      "id": "64cd3369-5c31-4153-a635-f1e6989e0027",
+      "name": "Window Buffer Memory",
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "position": [
+        280,
+        800
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "text": "={{ $json.chatInput }}",
+        "options": {
+          "maxIterations": 10
+        }
+      },
+      "id": "b0f49bf3-7449-4a02-b3cf-64b326691473",
+      "name": "AI Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        240,
+        540
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "model": "llama3.2:latest",
+        "options": {}
+      },
+      "id": "449992dc-11bd-49ee-a1fc-cf76d4792837",
+      "name": "Ollama Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "typeVersion": 1,
+      "position": [
+        60,
+        820
+      ],
+      "credentials": {
+        "ollamaApi": {
+          "id": "V9VDR5Y5sU473g8W",
+          "name": "Ollama account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "\n\n\n\n\n\n\n\n\n\n\n\n### 🚨 Change EventTypeID Here!\n* EventTypeID must be a number.\n* Your event type dictates the allowed duration of the booking.\n* If Event Type set to 30mins and the agent attempts to book 60mins, this will fail so make sure the agent knows how long to set the booking for!",
+        "height": 367.53952683528235,
+        "width": 275.38061368902055
+      },
+      "id": "349571aa-1bb5-4fc1-810d-b67ec3e30a42",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        640,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "toolDescription": "Call this tool to get the service availability.",
+        "url": "http://cmh-contentexchange-service-sit.aws.wiley.com:8080/version"
+      },
+      "id": "cdf8581b-bfed-4643-ad84-25947f38e034",
+      "name": "Get Availability",
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1,
+      "position": [
+        500,
+        800
+      ]
+    }
+  ],
+  "connections": {
+    "Chat Trigger": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Window Buffer Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ollama Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Availability": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2d5390fe803694d1b1f2e609c2c537452f5e78d552b0615d503ca74743ebe5cd"
+  }
+}
